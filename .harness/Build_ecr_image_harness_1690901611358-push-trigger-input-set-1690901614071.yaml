@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_ecr_image_harness_1690901611358-push-trigger-input-set
+  identifier: Build_ecr_image_harness_1690901611358pushtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: ECR
+  pipeline:
+    identifier: Build_ecr_image_harness_1690901611358
+    properties:
+      ci:
+        codebase:
+          build:
+            type: branch
+            spec:
+              branch: <+trigger.branch>
