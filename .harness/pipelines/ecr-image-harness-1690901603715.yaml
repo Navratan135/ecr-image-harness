@@ -1,6 +1,6 @@
 pipeline:
   identifier: Build_ecr_image_harness_1690901611358
-  name: Build ecr-image-harness
+  name: ECR Tutorial
   orgIdentifier: default
   projectIdentifier: ECR
   properties:
@@ -49,3 +49,4 @@ pipeline:
           caching:
             enabled: false
         type: CI
+  tags: {}
