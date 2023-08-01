@@ -1,0 +1,14 @@
+inputSet:
+  name: Build_ecr_image_harness_1690901611358-pr-trigger-input-set
+  identifier: Build_ecr_image_harness_1690901611358prtriggerinputset
+  orgIdentifier: default
+  projectIdentifier: ECR
+  pipeline:
+    identifier: Build_ecr_image_harness_1690901611358
+    properties:
+      ci:
+        codebase:
+          build:
+            type: PR
+            spec:
+              number: <+trigger.prNumber>
