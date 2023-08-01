@@ -12,40 +12,40 @@ pipeline:
   stages:
     - stage:
         identifier: build
-        name: build
+        name: Build and Test
         spec:
           cloneCodebase: true
           execution:
             steps:
               - step:
-                  identifier: npminstall
-                  name: npm_install
-                  spec:
-                    command: npm install
-                  timeout: ""
-                  type: Run
-              - step:
                   identifier: npmtest
-                  name: npm_test
+                  name: Run Test
                   spec:
-                    command: npm run test
+                    shell: Sh
+                    command: |-
+                      #echo "Welcome to Harness CI"
+                      #npm install
+                      #npm run build --if-present
+                      npm run test
                   timeout: ""
                   type: Run
               - step:
-                  identifier: dockerbuild
-                  name: docker_build
+                  type: BuildAndPushECR
+                  name: Build And Push to ECR
+                  identifier: Build_And_Push_to_ECR
                   spec:
-                    image: plugins/docker
-                    settings:
-                      dry_run: "true"
-                      repo: hello/world
-                      tags: latest
-                  timeout: ""
-                  type: Plugin
+                    connectorRef: AWS_Connector
+                    region: ca-central-1
+                    account: "880522693106"
+                    imageName: ecr-image-harness
+                    tags:
+                      - testing
           platform:
-            arch: Amd64
             os: Linux
+            arch: Amd64
           runtime:
-            spec: {}
             type: Cloud
+            spec: {}
+          caching:
+            enabled: false
         type: CI
